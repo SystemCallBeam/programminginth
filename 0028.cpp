@@ -13,9 +13,8 @@ void chk(int n1, int n2)
         c1 += (nS[n1][i] - nS[i][n1]);
         c2 += (nS[n2][i] - nS[i][n2]);
     }
-    if (c1 < c2)
+    if (c2 > c1)
     {
-        m = ST[n2];
         f = n2;
     }
     else if (c1 == c2)
@@ -27,7 +26,6 @@ void chk(int n1, int n2)
         }
         if (c2 > c1)
         {
-            m = ST[n2];
             f = n2;
         }
     }
@@ -39,11 +37,13 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> T[i];
     for (int i = 0; i < n; i++)
+    {
         for (int j = 0; j < n; j++)
         {
             cin >> S[i][j];
             nS[i][j] = S[i][j];
         }
+    }
     // Solve
     for (int i = 0; i < n; i++)
     {
