@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Tasks0028 {
+class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String teamName[] = new String[4];
@@ -36,11 +36,8 @@ class Tasks0028 {
                     continue;
                 }
                 
-                System.out.printf("this is i : (%d) and j : (%d)%n", i, j);
                 if (teamScore[point][point] > teamScore[j][j]) {
-                    
-                    System.out.println(teamName[point] + " " + teamScore[point][point]);
-                    teamScore[point][point] = -1;
+                    continue;
                 } else 
                 if (teamScore[point][point] == teamScore[j][j]) {
                     
@@ -57,28 +54,25 @@ class Tasks0028 {
                     sumLost2 -= teamScore[j][j];
 
                     if (sumGoal1 - sumLost1 > sumGoal2 - sumLost2) {
-                        System.out.println(teamName[point] + " " + teamScore[point][point]);
-                        teamScore[point][point] = -1;
+                        continue;
                     } else 
                     if (sumGoal1 - sumLost1 < sumGoal2 - sumLost2) {
-                        System.out.println(teamName[j] + " " + teamScore[j][j]);
-                        teamScore[j][j] = -1;
+                        point = j;
                     } else {
                         if (sumGoal1 > sumGoal2) {
-                            System.out.println(teamName[point] + " " + teamScore[point][point]);
-                            teamScore[point][point] = -1;
+                            continue;
                         } else {
-                            System.out.println(teamName[j] + " " + teamScore[j][j]);
-                            teamScore[j][j] = -1;
+                            point = j;
                         }
                     }
                 } else {
                     point = j;
-                    System.out.println(teamName[j] + " " + teamScore[j][j]);
-                    teamScore[j][j] = -1;
                 }
             }
-            System.out.println(teamName[point] + " " + teamScore[point][point]);
+            if (teamScore[point][point] > 0) {
+                System.out.println(teamName[point] + " " + teamScore[point][point]);
+                teamScore[point][point] = -1;
+            }
         }
 
         for (int i = 0; i < 4; i++) {
